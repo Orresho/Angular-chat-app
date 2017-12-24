@@ -28,6 +28,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//
+// app.use(express.static(__dirname + '../client/dist'));
+
+// Enable cross-origin
 app.use(cors());
 
 app.use('/', index);

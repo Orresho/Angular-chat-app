@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+const path = require('path');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send('It fucking works m9-1');
+  // res.sendFile(path.join(__dirname + '../../client/dist/index.html'));
+  res.send('works')
 });
 
 module.exports = router;
