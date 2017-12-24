@@ -1,14 +1,24 @@
+// Express init
 var express = require('express');
+var app = express();
+
+// Other modules
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Routes
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-var app = express();
+// DB configuration
+var mongoose = require('./config/mongoose');
+var db = require('./config/database');
+
+// Set database name
+mongoose(db.dbName);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
