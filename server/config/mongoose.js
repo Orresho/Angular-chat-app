@@ -6,7 +6,7 @@ function mongoDB(dbName) {
     mongoose.Promise = global.Promise;
 
     db.connection.on('connected', () => {
-        console.log('MongoDB connection opened');
+        console.log(`Mongo connection opened to ${connectionString}`);
     });
 
     db.connection.on('error', (err) => {
