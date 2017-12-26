@@ -1,0 +1,15 @@
+.register-wrapper{
+    display: grid;
+    grid-template-columns: 5fr 3fr 5fr;
+}
+
+.form-wrapper{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    border: gray 1px solid;
+    border-radius: 5px;
+    padding: 1em;
+    padding-bottom: 3em;
+    /* padding-bottom: 2em; */
+}

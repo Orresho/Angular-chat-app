@@ -1,23 +1,4 @@
-
-.nested-grid > div{
-    border:#333 1px solid;
-}
-
-.grid-container > div{
-    background-color: #ccc;
-    padding: 1em;
-    margin: 1em;
-}
-
-.grid-container > div:nth-child(odd){
-    background-color: #ddd;
-}
-
-@media(min-width: 700px) {
-        .grid-container{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 1em;
-        grid-auto-rows: minmax(100px, auto);
-    }
+.home-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }

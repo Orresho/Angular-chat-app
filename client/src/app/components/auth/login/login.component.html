@@ -1,0 +1,43 @@
+<div class="register-wrapper">
+  
+    <!-- Empty container div -->
+    <div></div>
+  
+    <!-- Login form grid-wrapper -->
+    <div class="form-wrapper">
+        <form (submit)="onLoginSubmit()">
+          
+          <div class="form-group">
+            <h1 style="text-align:center;">Login</h1>
+            <label for="username">User name</label>
+            <input 
+                type="text" 
+                name="username" 
+                formControlName="username" 
+                class="form-control" 
+                autocomplete="off" 
+                placeholder="Username">
+          </div>
+      
+          <div class="form-group">
+              <label for="password">Password</label>
+              <input 
+                  type="password" 
+                  name="password" 
+                  formControlName="password" 
+                  class="form-control" 
+                  autocomplete="off" 
+                  placeholder="Password">
+          </div>
+         
+          <div>
+            <button type="submit" class="btn btn-success">Login</button>
+          </div>
+  
+        </form>
+      </div>
+  
+      <!-- Empty container div -->
+    <div></div>
+  
+  </div>
