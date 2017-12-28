@@ -5,7 +5,7 @@
 
   <!-- Register form grid-wrapper -->
   <div class="form-wrapper">
-      <form (submit)="onRegisterSubmit()">
+      <form ngNativeValidate [formGroup]="myForm" (submit)="onRegisterSubmit()">
         
         <div class="form-group">
           <h1 style="text-align:center;">Register</h1>
@@ -45,16 +45,24 @@
             <label for="confirmPassword">Confirm Password</label>
             <input 
                 type="password" 
-                name="password" 
-                formControlName="password" 
+                name="confirmPassword" 
+                formControlName="confirmPassword" 
                 class="form-control" 
                 autocomplete="off" 
-                placeholder="Password">
+                placeholder="Confirm password">
+                
+                <div class="help-block">
+                    <p *ngIf="myForm.errors?.matchingPasswords && myForm.controls.confirmPassword.dirty">Passwords do not match</p>
+                </div>
         </div>
+        
         <div>
-          <button type="submit" class="btn btn-success">Sign up</button>
+            <button 
+            type="submit" 
+            class="btn btn-success"
+            [disabled]="!myForm.valid"
+            >Sign up</button>
         </div>
-
       </form>
     </div>
 

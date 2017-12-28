@@ -1,4 +1,3 @@
-import { RegisterValidationService } from './_services/registerValidation.service';
 import { AuthService } from './_services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -12,6 +11,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MessengerComponent } from './components/messenger/messenger.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { routing } from './app.router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,9 +26,11 @@ import { routing } from './app.router';
   ],
   imports: [
     BrowserModule,
-    routing
+    routing,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [AuthService, RegisterValidationService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
