@@ -1,12 +1,10 @@
+import { AuthModule } from './components/auth/_auth.module';
 import { AuthService } from './_services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { AuthComponent } from './components/auth/auth.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { RegisterComponent } from './components/auth/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MessengerComponent } from './components/messenger/messenger.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -17,9 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     HomeComponent,
-    AuthComponent,
-    LoginComponent,
-    RegisterComponent,
     ProfileComponent,
     MessengerComponent,
     NavbarComponent,
@@ -27,8 +22,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     routing,
+    FormsModule,
     ReactiveFormsModule,
-    FormsModule
+    AuthModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

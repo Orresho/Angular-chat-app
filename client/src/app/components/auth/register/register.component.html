@@ -51,6 +51,7 @@
                 autocomplete="off" 
                 placeholder="Confirm password">
                 
+                <!-- Display error message in case passwords don't match -->
                 <div class="help-block">
                     <p *ngIf="myForm.errors?.matchingPasswords && myForm.controls.confirmPassword.dirty">Passwords do not match</p>
                 </div>
