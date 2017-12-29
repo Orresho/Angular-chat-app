@@ -25,7 +25,8 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterSubmit() {
-    console.log(this.myForm);
+
+    this.disableForm();
     const user = {
       username: this.myForm.get('username').value,
       email: this.myForm.get('email').value,
@@ -33,8 +34,11 @@ export class RegisterComponent implements OnInit {
     };
 
     // Call service
-    // this.authService.saveUser()
-    console.log(user);
+    this.authService.saveUser(user)
+      .subscribe(data => {
+        console.log(data);
+      });
+    // console.log(user);
     this.myForm.reset();
   }
 
