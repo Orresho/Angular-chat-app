@@ -1,15 +1,40 @@
-.register-wrapper{
+/* The whole page */
+.page-wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/* First row of the page-wrapper */
+.first-row{
+    display: grid;
+    grid-template-columns: 5fr 3fr 5fr;
+    height: 60px;
+}
+
+/* Second row of the page-wrapper */
+.login-wrapper{
     display: grid;
     grid-template-columns: 5fr 3fr 5fr;
 }
 
+/* The middle column of the register-wrapper */
 .form-wrapper{
     display: grid;
     justify-items: center;
     grid-template-columns: 1fr;
-    border: gray 1px solid;
+    border: rgb(240, 240, 240) 1px solid;
     border-radius: 5px;
     padding: 1em;
     padding-bottom: 3em;
-    /* padding-bottom: 2em; */
+}
+
+/* The form elements inside the middle column */
+.loginForm{
+    width: 270px;
+}
+
+/* Error attributes / styles */
+.error-block{
+    text-align: left;
+    color:red;
 }

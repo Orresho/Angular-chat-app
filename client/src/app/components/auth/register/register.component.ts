@@ -1,6 +1,7 @@
 import { AuthService } from './../../../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 
@@ -11,11 +12,16 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
+  // Card message displayed based on register result
+  message;
+  messageClass;
+
   myForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.createForm();
   }
@@ -36,9 +42,31 @@ export class RegisterComponent implements OnInit {
     // Call service
     this.authService.saveUser(user)
       .subscribe(data => {
-        console.log(data);
+        if (!data.success) {
+          this.message = data.message;
+          this.messageClass = 'alert alert-danger';
+
+          // Remove error alert after x miliseconds
+          setTimeout(() => {
+            this.message = '';
+            this.messageClass = '';
+          }, 8000);
+
+          // Re-enable form after x miliseconds.
+          setTimeout(() => {
+            this.enableForm();
+          }, 1500);
+
+        } else {
+          this.message = data.message;
+          this.messageClass = 'alert alert-success';
+
+          // If successfull registration => Redirect to login view after x miliseconds
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 2000);
+        }
       });
-    // console.log(user);
     this.myForm.reset();
   }
 

@@ -1,73 +1,89 @@
-<div class="register-wrapper">
+<div class="page-wrapper">
   
-  <!-- Empty container div -->
-  <div></div>
+    <!-- First row with the success/error message -->
+    <div class="first-row"> 
+        <!-- Empty column div -->
+        <div></div>
 
-  <!-- Register form grid-wrapper -->
-  <div class="form-wrapper">
-      <form ngNativeValidate [formGroup]="myForm" (submit)="onRegisterSubmit()">
-        
-        <div class="form-group">
-          <h1 style="text-align:center;">Register</h1>
-          <label for="username">User name</label>
-          <input 
-              type="text" 
-              name="username" 
-              formControlName="username" 
-              class="form-control" 
-              autocomplete="off" 
-              placeholder="Username">
+        <!-- Custom Success/Error Message -->
+        <div class="show-hide-message">
+            <div [ngClass]="messageClass" style="text-align:center;">
+                {{ message }}
+            </div>
         </div>
-    
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input 
-                type="text" 
-                name="email" 
-                formControlName="email" 
-                class="form-control" 
-                autocomplete="off" 
-                placeholder="Email">
-        </div>
-
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input 
-                type="password" 
-                name="password" 
-                formControlName="password" 
-                class="form-control" 
-                autocomplete="off" 
-                placeholder="Password">
-        </div>
-
-        <div class="form-group">
-            <label for="confirmPassword">Confirm Password</label>
-            <input 
-                type="password" 
-                name="confirmPassword" 
-                formControlName="confirmPassword" 
-                class="form-control" 
-                autocomplete="off" 
-                placeholder="Confirm password">
-                
-                <!-- Display error message in case passwords don't match -->
-                <div class="help-block">
-                    <p *ngIf="myForm.errors?.matchingPasswords && myForm.controls.confirmPassword.dirty">Passwords do not match</p>
-                </div>
-        </div>
-        
-        <div>
-            <button 
-            type="submit" 
-            class="btn btn-success"
-            [disabled]="!myForm.valid"
-            >Sign up</button>
-        </div>
-      </form>
     </div>
 
-    <!-- Empty container div -->
-  <div></div>
 
+    <!-- Second row with the register form -->
+    <div class="register-wrapper">
+        <!-- Empty column div -->
+        <div></div>
+
+        <!-- Register form grid-wrapper -->
+        <div class="form-wrapper">
+            <form class="registerForm" ngNativeValidate [formGroup]="myForm" (submit)="onRegisterSubmit()">
+    
+                <div class="form-group">
+                    <h1 style="text-align:center;">Register</h1>
+                    <label for="username">User name</label>
+                    <input 
+                        type="text" 
+                        name="username" 
+                        formControlName="username" 
+                        class="form-control" 
+                        autocomplete="off" 
+                        placeholder="Username">
+                </div>
+            
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="text" 
+                        name="email" 
+                        formControlName="email" 
+                        class="form-control" 
+                        autocomplete="off" 
+                        placeholder="Email">
+                </div>
+        
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        formControlName="password" 
+                        class="form-control" 
+                        autocomplete="off" 
+                        placeholder="Password">
+                </div>
+        
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input 
+                        type="password" 
+                        name="confirmPassword" 
+                        formControlName="confirmPassword" 
+                        class="form-control" 
+                        autocomplete="off" 
+                        placeholder="Confirm password">
+                        
+                        <!-- Display error message in case passwords don't match -->
+                        <div class="error-block">
+                            <p *ngIf="myForm.errors?.matchingPasswords && myForm.controls.confirmPassword.dirty">Passwords do not match</p>
+                        </div>
+                </div>
+                
+                <div>
+                    <button 
+                    type="submit" 
+                    class="btn btn-success"
+                    [disabled]="!myForm.valid"
+                    >Sign up</button>
+                </div>
+            </form>
+        </div>
+    
+        <!-- Empty column div -->
+        <div></div>
+    </div>
 </div>

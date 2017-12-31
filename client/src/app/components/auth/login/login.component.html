@@ -1,11 +1,27 @@
 <div class="register-wrapper">
   
-    <!-- Empty container div -->
+  <!-- First row with the success/error message -->
+  <div class="first-row"> 
+      <!-- Empty column div -->
+      <div></div>
+
+      <!-- Custom Success/Error Message -->
+      <div class="show-hide-message">
+          <div [ngClass]="messageClass" style="text-align:center;">
+              {{ message }}
+          </div>
+      </div>
+  </div>
+
+
+  <div class="login-wrapper">
+
+    <!-- Empty column div -->
     <div></div>
-  
+
     <!-- Login form grid-wrapper -->
     <div class="form-wrapper">
-        <form (submit)="onLoginSubmit()">
+        <form class="loginForm" (submit)="onLoginSubmit()">
           
           <div class="form-group">
             <h1 style="text-align:center;">Login</h1>
@@ -29,15 +45,15 @@
                   autocomplete="off" 
                   placeholder="Password">
           </div>
-         
+          
           <div>
             <button type="submit" class="btn btn-success">Login</button>
           </div>
-  
+
         </form>
       </div>
-  
-      <!-- Empty container div -->
+
+      <!-- Empty column div -->
     <div></div>
-  
   </div>
+</div>

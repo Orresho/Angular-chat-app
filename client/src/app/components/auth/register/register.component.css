@@ -1,8 +1,23 @@
+/* The whole page */
+.page-wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/* First row of the page-wrapper */
+.first-row{
+    display: grid;
+    grid-template-columns: 5fr 3fr 5fr;
+    height: 60px;
+}
+
+/* Second row of the page-wrapper */
 .register-wrapper{
     display: grid;
     grid-template-columns: 5fr 3fr 5fr;
 }
 
+/* The middle column of the register-wrapper */
 .form-wrapper{
     display: grid;
     justify-items: center;
@@ -13,7 +28,13 @@
     padding-bottom: 3em;
 }
 
-.help-block{
+/* The form elements inside the middle column */
+.registerForm{
+    width: 270px;
+}
+
+/* Error attributes / styles */
+.error-block{
     text-align: left;
     color:red;
 }
