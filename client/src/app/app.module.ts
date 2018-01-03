@@ -1,5 +1,5 @@
+import { AuthLogService } from './_services/authentication/auth-log.service';
 import { AuthModule } from './components/auth/_auth.module';
-import { AuthService } from './_services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -26,7 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     AuthModule
   ],
-  providers: [AuthService],
+  providers: [AuthLogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

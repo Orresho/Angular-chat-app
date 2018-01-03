@@ -1,9 +1,7 @@
-import { AuthService } from './../../../_services/auth.service';
+import { AuthLogService } from './../../../_services/authentication/auth-log.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-
-
 
 @Component({
   selector: 'app-register',
@@ -20,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private authService: AuthLogService,
     private router: Router
   ) {
     this.createForm();
