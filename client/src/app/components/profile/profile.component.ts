@@ -11,7 +11,8 @@ export class ProfileComponent implements OnInit {
 
 
   // Global properties
-  user; 
+  username;
+  email; 
 
   constructor(
     private authShared: AuthShared
@@ -24,7 +25,10 @@ export class ProfileComponent implements OnInit {
   getProfile(){
     this.authShared.getProfile()
       .subscribe(result => {
-        this.user = result.user;
+
+        this.username = result.user.username;
+        this.email = result.user.email;
+        
         console.log(result.user);
       })
   }
