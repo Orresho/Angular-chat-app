@@ -1,3 +1,4 @@
+import { AuthLogService } from './../../_services/authentication/auth-log.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+
+  // Global properties
+  user; 
+
+  constructor(
+    private authLogService: AuthLogService
+  ) { }
 
   ngOnInit() {
+    this.getProfile();
+  }
+
+  getProfile(){
+    this.authLogService.getProfile()
+      .subscribe(result => {
+        this.user = result.user;
+        console.log(result.user);
+      })
   }
 
 }
