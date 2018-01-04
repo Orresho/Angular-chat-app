@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var jwt = require('jsonwebtoken');
-var bcrypt = require('bcryptjs');
 var config = require('../config/database');
 
 /* GET users listing. */
@@ -26,14 +25,15 @@ router.use((req, res, next) => {
     if (!token) {
         res.json({ success: false, message: 'No token provided' });
     } else {
-        // decrypt token
+        
+        // decode token
         jwt.verify(token, config.secret, (err, decoded) => {
             // respond with error if token is invalid or has expired
             if (err) {
                 res.json({ success: false, message: 'Token invalid: ' + err })
             } else {
 
-                // Assign to global variable
+                // Assign decoded token to global variable
                 req.decoded = decoded;
 
                 // Break

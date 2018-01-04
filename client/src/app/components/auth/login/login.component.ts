@@ -1,3 +1,4 @@
+import { AuthShared } from './../../../_services/authentication/auth-shared.service';
 import { Router } from '@angular/router';
 import { AuthLogService } from './../../../_services/authentication/auth-log.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthLogService,
+    private authShared: AuthShared,
     private router: Router
   ) {
     this.createForm();
@@ -49,7 +51,7 @@ export class LoginComponent implements OnInit {
           this.messageClass = 'alert alert-danger'
           this.message = data.message
 
-          // Remove failure alert
+          // Remove failure alert after x miliseconds
           setTimeout(() => {
             this.messageClass = '';
             this.message = '';
@@ -63,7 +65,7 @@ export class LoginComponent implements OnInit {
         } else {
 
           // Store token and user to localStorage
-          this.authService.storeUserData(data.token, data.user);
+          this.authShared.storeUserData(data.token, data.user);
 
           // Disable form
           this.disableForm();

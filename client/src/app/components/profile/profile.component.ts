@@ -1,3 +1,4 @@
+import { AuthShared } from './../../_services/authentication/auth-shared.service';
 import { AuthLogService } from './../../_services/authentication/auth-log.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,7 +14,7 @@ export class ProfileComponent implements OnInit {
   user; 
 
   constructor(
-    private authLogService: AuthLogService
+    private authShared: AuthShared
   ) { }
 
   ngOnInit() {
@@ -21,7 +22,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getProfile(){
-    this.authLogService.getProfile()
+    this.authShared.getProfile()
       .subscribe(result => {
         this.user = result.user;
         console.log(result.user);

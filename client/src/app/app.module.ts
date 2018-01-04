@@ -1,3 +1,4 @@
+import { AuthShared } from './_services/authentication/auth-shared.service';
 import { AuthLogService } from './_services/authentication/auth-log.service';
 import { AuthModule } from './components/auth/_auth.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,7 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     AuthModule
   ],
-  providers: [AuthLogService],
+  providers: [AuthLogService, AuthShared],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
