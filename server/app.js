@@ -13,6 +13,7 @@ var cors = require('cors');
 // Routes
 var index = require('./routes/index');
 var users = require('./routes/users');
+var user = require('./routes/user')
 
 // DB configuration
 var mongoose = require('./config/mongoose');
@@ -36,7 +37,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/users', users); // User reg and auth
+app.use('/user', user); // When user is logged in
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

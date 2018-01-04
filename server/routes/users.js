@@ -10,8 +10,10 @@ router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
-// Authenticate the user
+// Authentication route
 router.post('/login', (req, res, next) => {
+
+  // Check if user has entered forms
   if (!req.body.username) {
     res.json({ success: false, message: 'Please enter a username' }) // return error
   } else {
@@ -26,6 +28,7 @@ router.post('/login', (req, res, next) => {
   }
 
   function findUser() {
+
     // Check for user in DB, if found => return user else return error
     User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
       if (err) {
@@ -44,7 +47,7 @@ router.post('/login', (req, res, next) => {
             const token = jwt.sign({ userId: user._id }, config.secret, { expiresIn: '24h' });
             res.json({
               success: true,
-              message: 'Login Succcessfull',
+              message: 'Login Successfull',
               token: token,
               user: {
                 username: user.username
@@ -59,7 +62,7 @@ router.post('/login', (req, res, next) => {
 });
 
 
-// Add user to DB
+// Register route
 router.post('/register', (req, res, next) => {
 
   // Make sure user no fields are left empty
@@ -72,6 +75,8 @@ router.post('/register', (req, res, next) => {
       if (!req.body.password) {
         res.json({ success: false, message: 'Please enter a password' })
       } else {
+
+        // Create user and insert to Database
         createUser();
       }
     }
@@ -85,7 +90,10 @@ router.post('/register', (req, res, next) => {
       password: bcrypt.hashSync(req.body.password, 10)
     });
 
+    // Save user to database
     user.save((err) => {
+
+      // Check for errors => return error if username or email already exists (using mongoose-unique-validator)
       if (err) {
         res.json({ success: false, message: 'Email or username is already taken' });
       } else {
@@ -93,9 +101,8 @@ router.post('/register', (req, res, next) => {
       }
     })
   }
+
 });
-
-
 
 
 module.exports = router;

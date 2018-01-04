@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'); // Node Tool for MongoDB
-var uniqueValidator = require('mongoose-unique-validator');
+var uniqueValidator = require('mongoose-unique-validator'); // Provides unique validation to mongo
 mongoose.Promise = global.Promise; // Configure Mongoose Promises
 const Schema = mongoose.Schema; // Import Schema from Mongoose
 
