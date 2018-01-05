@@ -1,27 +1,27 @@
 <div class="navbar-grid">
   <ul class="nav nav-pills">
     <li routerLinkActive="active">
-      <a [routerLink]="['/home']">Home</a>
+      <a [routerLink]="['/home']" class="nav-link">Home</a>
     </li>
 
     <li *ngIf="!authLogService.loggedIn()" routerLinkActive="active">
-      <a [routerLink]="['/login']">Login</a>
+      <a [routerLink]="['/login']" class="nav-link">Login</a>
     </li>
 
     <li *ngIf="!authLogService.loggedIn()" routerLinkActive="active">
-      <a [routerLink]="['/register']">Register</a>
+      <a [routerLink]="['/register']" class="nav-link">Register</a>
     </li>
 
     <li *ngIf="authLogService.loggedIn()" routerLinkActive="active">
-      <a [routerLink]="['/messenger']">Messenger</a>
+      <a [routerLink]="['/messenger']" class="nav-link">Messenger</a>
     </li>
 
     <li *ngIf="authLogService.loggedIn()" routerLinkActive="active">
-      <a [routerLink]="['/profile']">Profile</a>
+      <a [routerLink]="['/profile']" class="nav-link">Profile</a>
     </li>
 
     <li *ngIf="authLogService.loggedIn()" routerLinkActive="active">
-      <a [routerLink]="['/logout']" (click)="onLogout()">Logout</a>
+      <a (click)="onLogout()" class="nav-link" style="color: #00B7FF">Logout</a>
     </li>
 
   </ul>
