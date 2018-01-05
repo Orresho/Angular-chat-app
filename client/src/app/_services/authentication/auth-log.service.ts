@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Http, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
+import { tokenNotExpired } from 'angular2-jwt';
 
 
 @Injectable()
@@ -31,8 +32,8 @@ export class AuthLogService {
     }
 
     // When user is logged in
-    isLoggedIn() {
-
+    loggedIn() {
+        return tokenNotExpired();
     }
 
 }

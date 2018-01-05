@@ -7,9 +7,9 @@ import { Observable } from 'rxjs/Observable';
 export class AuthShared {
 
     domain = 'http://localhost:3000'
-    authToken;
-    user;
-    options;
+    authToken: string;
+    user: string;
+    options: RequestOptions;
 
     constructor(
         private http: Http
@@ -56,4 +56,19 @@ export class AuthShared {
             .catch((error: Response) => Observable.throw(error));
 
     }
+
+
+    //******** */
+    //
+    // Logout
+    //
+    //******* */
+    logout(){
+
+        // Clear headers and localStorage
+        this.authToken = null;
+        this.user = null;
+        localStorage.clear();
+    }
+
 }
