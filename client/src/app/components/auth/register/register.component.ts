@@ -48,12 +48,16 @@ export class RegisterComponent implements OnInit {
           setTimeout(() => {
             this.message = '';
             this.messageClass = '';
-          }, 8000);
+          }, 5000);
+
 
           // Re-enable form after x miliseconds.
           setTimeout(() => {
             this.enableForm();
           }, 1500);
+
+          // Reset the form
+          this.myForm.reset();
 
         } else {
           this.message = data.message;
@@ -65,7 +69,6 @@ export class RegisterComponent implements OnInit {
           }, 2000);
         }
       });
-    this.myForm.reset();
   }
 
 
@@ -99,7 +102,7 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(20)
       ])]
     },
-      { validator: this.matchingPasswords()});
+      { validator: this.matchingPasswords() });
   }
 
   // Validation to check that the two password fields match
@@ -115,7 +118,7 @@ export class RegisterComponent implements OnInit {
 
 
   // Disable form => Used when user submits the form succesfully
-  disableForm(){
+  disableForm() {
     this.myForm.controls['username'].disable();
     this.myForm.controls['email'].disable();
     this.myForm.controls['password'].disable();
@@ -123,7 +126,7 @@ export class RegisterComponent implements OnInit {
   }
 
   // Enable form => Used when submitting the form fails, enabling the user to do it again.
-  enableForm(){
+  enableForm() {
     this.myForm.controls['username'].enable();
     this.myForm.controls['email'].enable();
     this.myForm.controls['password'].enable();

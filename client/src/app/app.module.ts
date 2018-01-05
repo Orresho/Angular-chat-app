@@ -1,3 +1,5 @@
+import { NotAuthGuard } from './_guards/notAuth.guard';
+import { AuthGuard } from './_guards/auth.guard';
 import { AuthShared } from './_services/authentication/auth-shared.service';
 import { AuthLogService } from './_services/authentication/auth-log.service';
 import { AuthModule } from './components/auth/_auth.module';
@@ -13,6 +15,7 @@ import { routing } from './app.router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,9 +30,9 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     FormsModule,
     ReactiveFormsModule,
     AuthModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule
   ],
-  providers: [AuthLogService, AuthShared],
+  providers: [AuthLogService, AuthShared, AuthGuard, NotAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

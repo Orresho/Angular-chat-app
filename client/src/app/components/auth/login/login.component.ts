@@ -1,3 +1,4 @@
+import { AuthGuard } from './../../../_guards/auth.guard';
 import { AuthShared } from './../../../_services/authentication/auth-shared.service';
 import { Router } from '@angular/router';
 import { AuthLogService } from './../../../_services/authentication/auth-log.service';
@@ -11,22 +12,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  message;
-  messageClass;
+  // URL which the user wanted to view/access
+  // This property is used as a redirect-URL in the login-method if user is authorized
+  previousUrl;
 
+  // The alert properties
+  message: string;
+  messageClass: string;
+
+  // The login form property
   myForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthLogService,
     private authShared: AuthShared,
-    private router: Router
+    private router: Router,
+    private authGuard: AuthGuard
   ) {
     this.createForm();
 
   }
 
   ngOnInit() {
+    this.routerSnapShot();
+  }
+
+
+  routerSnapShot() {
+
+    // Check if user has entered a URL they are not yet authorized to view
+    if (this.authGuard.redirectUrl) {
+      this.messageClass = 'alert alert-danger';
+      this.message = 'You must be logged in to view that page';
+
+      // Remove alert after x miliseconds
+      setTimeout(() => {
+        this.messageClass = '';
+        this.message = '';
+      }, 8000);
+
+      // We store the URL the user wanted to access and also set the redirectUrl to undefined to break it's state
+      this.previousUrl = this.authGuard.redirectUrl;
+      this.authGuard.redirectUrl = undefined;
+    }
   }
 
 
@@ -74,9 +103,16 @@ export class LoginComponent implements OnInit {
           this.messageClass = 'alert alert-success';
           this.message = data.message;
 
-          // Navigate to /profile
+          // Delay the navigation to URL x miliseconds
           setTimeout(() => {
-            this.router.navigate(['/profile']);
+
+            // If user tried to access some URL not accessible before authenticated, we direct user to said URL
+            if (this.previousUrl) {
+              this.router.navigate([this.previousUrl]);
+            } else {
+              this.router.navigate(['/profile']);
+            }
+
           }, 1500);
         }
       });
