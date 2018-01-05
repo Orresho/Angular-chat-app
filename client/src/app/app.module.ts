@@ -11,6 +11,7 @@ import { MessengerComponent } from './components/messenger/messenger.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { routing } from './app.router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     routing,
     FormsModule,
     ReactiveFormsModule,
-    AuthModule
+    AuthModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [AuthLogService, AuthShared],
   bootstrap: [AppComponent]
