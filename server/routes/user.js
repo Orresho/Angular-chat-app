@@ -28,6 +28,7 @@ router.use((req, res, next) => {
         
         // decode token
         jwt.verify(token, config.secret, (err, decoded) => {
+            
             // respond with error if token is invalid or has expired
             if (err) {
                 res.json({ success: false, message: 'Token invalid: ' + err })
