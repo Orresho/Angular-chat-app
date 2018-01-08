@@ -61,7 +61,24 @@ router.post('/newMessage', (req, res, next) => {
 
 // Retrieve all messages
 router.get('/allMessages', (req, res) => {
-    res.send('Works getting all messages');
+
+    // Query database
+    Message.find({}, (err, data) => {
+
+        // Check for error
+        if (err) {
+            res.json({ success: false, message: err });
+        } else {
+
+            // Check if there are any messages in database
+            if (!data.content) {
+                res.json({ success: false, message: 'There are no messages yet, be first!' });
+            } else {
+                // Send the data with messages to client
+                res.json({ success: true, data: data });
+            }
+        }
+    });
 });
 
 module.exports = router;
