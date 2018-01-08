@@ -1,0 +1,19 @@
+/* The whole page */
+.page-wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.navigation-wrapper{
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
+    grid-gap: 1em;  
+    margin-bottom: 3em; 
+    text-align: center;
+}
+
+.message-wrapper{
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-gap: 1em;
+}
