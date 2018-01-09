@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessengerComponent implements OnInit {
 
-  constructor() { }
+  myForm: FormGroup;
+
+  // Messages from two users
+  recipientName: string;
+  recipientMessage: string;
+
+  senderName: string;
+  senderMessage: string;
+  
+
+  constructor(
+    private formBuilder: FormBuilder) {
+    
+      // Create form
+      this.createForm();    
+  }
 
   ngOnInit() {
+  }
+
+
+  // Function to create the form
+  createForm() {
+    this.myForm = this.formBuilder.group({
+      content: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(500)
+      ])],
+    });
+  }
+
+
+  onMessageSubmit(){
+
+    // Message and sender name
+    this.senderMessage = this.myForm.get('content').value;
+    this.senderName = JSON.parse(localStorage.getItem("user"));
+
+    const message = {
+      content: this.myForm.get('content').value,
+      user: JSON.parse(localStorage.getItem('user')),
+      token: localStorage.getItem('token')
+    }  
+    console.log(message);
+    this.myForm.reset();
+    
   }
 
 }

@@ -6,10 +6,18 @@
 
 .navigation-wrapper{
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
+    grid-template-columns: 4fr repeat(6, 1fr) 4fr;
     grid-gap: 1em;  
     margin-bottom: 3em; 
     text-align: center;
+}
+
+a{
+    min-width: 140px;
+}
+
+.panel-style{
+    max-height: 200px;
 }
 
 .message-wrapper{
