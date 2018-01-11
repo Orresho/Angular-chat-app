@@ -1,3 +1,4 @@
+import { MessagesService } from './../../_services/messages/messages.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -19,7 +20,9 @@ export class MessengerComponent implements OnInit {
   
 
   constructor(
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private messagesService: MessagesService
+   ) {
     
       // Create form
       this.createForm();    
@@ -52,6 +55,12 @@ export class MessengerComponent implements OnInit {
       user: JSON.parse(localStorage.getItem('user')),
       token: localStorage.getItem('token')
     }  
+
+    this.messagesService.saveMessages(message)
+      .subscribe(data => {
+        console.log(data);
+      })
+
     console.log(message);
     this.myForm.reset();
     

@@ -13,7 +13,7 @@ router.post('/newMessage', (req, res, next) => {
     if (!req.body.content) {
         res.json({ success: false, message: 'Can\'t send empty message' })
     } else {
-        if (!req.body.createdBy) {
+        if (!req.body.user.username) {
             res.json({ success: false, message: 'Message sender is needed' })
         } else {
 
@@ -26,7 +26,7 @@ router.post('/newMessage', (req, res, next) => {
     function saveMessage() {
         const message = new Message({
             content: req.body.content,
-            createdBy: req.body.createdBy
+            createdBy: req.body.user.username
         });
 
         message.save((err) => {
