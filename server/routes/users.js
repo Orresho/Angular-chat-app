@@ -40,7 +40,7 @@ router.post('/login', (req, res, next) => {
 
           // Compare hashed password user enters and password from user in database
           if (!bcrypt.compareSync(req.body.password, user.password)) {
-            res.json({ success: false, message: 'Wrong passowrd or username' });
+            res.json({ success: false, message: 'Wrong password or username' });
           } else {
 
             // Create a jwt token and send back to client with the response
