@@ -1,3 +1,4 @@
+import { MessagesService } from './_services/messages/messages.service';
 import { NotAuthGuard } from './_guards/notAuth.guard';
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthShared } from './_services/authentication/auth-shared.service';
@@ -32,7 +33,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     AuthModule,
     FlashMessagesModule
   ],
-  providers: [AuthLogService, AuthShared, AuthGuard, NotAuthGuard],
+  providers: [AuthLogService, AuthShared, AuthGuard, NotAuthGuard, MessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
