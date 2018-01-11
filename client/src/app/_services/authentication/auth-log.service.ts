@@ -28,7 +28,7 @@ export class AuthLogService {
         //Http post req to server to authenticate user
         return this.http.post(`${this.domain}/users/login`, user)
             .map((response: Response) => response.json())
-            .catch((err: Response) => Observable.throw(err));
+            .catch((err: Response) => Observable.throw(err.json()));
     }
 
     // When user is logged in
