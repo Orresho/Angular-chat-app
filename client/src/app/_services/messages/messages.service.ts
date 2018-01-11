@@ -52,7 +52,6 @@ export class MessagesService {
         return this.http.post(`${this.domain}/messages/newMessage`, data)
             .map((response: Response) => {
                 const res = response.json();
-                console.log(res);
             })
             .catch((error: Response) => Observable.throw(error.json()));
 

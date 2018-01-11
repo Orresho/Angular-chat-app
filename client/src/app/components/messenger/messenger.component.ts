@@ -58,7 +58,7 @@ export class MessengerComponent implements OnInit {
 
     this.messagesService.saveMessages(message)
       .subscribe(data => {
-        console.log(data);
+        
       })
 
     console.log(message);
