@@ -34,7 +34,7 @@ export class NavbarComponent {
     // Redirect after x miliseconds
     setTimeout(() => {
       this.router.navigate(['/login']);
-    }, 2500);
+    }, 1000);
 
   }
 

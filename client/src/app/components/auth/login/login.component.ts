@@ -113,7 +113,7 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/profile']);
             }
 
-          }, 1500);
+          }, 1000);
         }
       });
 
