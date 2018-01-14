@@ -15,6 +15,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { routing } from './app.router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { ProfileInfoComponent } from './components/profile/profile-info/profile-info.component';
+import { ProfileEditComponent } from './components/profile/profile-edit/profile-edit.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     ProfileComponent,
     MessengerComponent,
     NavbarComponent,
+    ProfileInfoComponent,
+    ProfileEditComponent,
   ],
   imports: [
     BrowserModule,

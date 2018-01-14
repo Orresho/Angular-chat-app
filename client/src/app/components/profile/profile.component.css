@@ -1,0 +1,9 @@
+.page-wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.profile-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+}

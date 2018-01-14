@@ -33,4 +33,9 @@ export class ProfileComponent implements OnInit {
       })
   }
 
+  // Button saves changes from users profile
+  saveChanges(){
+
+  }
+
 }
