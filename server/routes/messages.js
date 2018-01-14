@@ -71,7 +71,7 @@ router.get('/allMessages', (req, res) => {
         } else {
 
             // Check if there are any messages in database
-            if (!data.content) {
+            if (!data) {
                 res.json({ success: false, message: 'There are no messages yet, be first!' });
             } else {
                 // Send the data with messages to client

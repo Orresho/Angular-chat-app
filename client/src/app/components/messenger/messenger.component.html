@@ -2,30 +2,7 @@
 
   <!-- Wrapper for navigation above messages -->
   <div class="navigation-wrapper">
-    <div></div>
-    <div>
-      <a href="#" class="btn btn-info">Technology</a>
-    </div>
-
-    <div>
-      <a href="#" class="btn btn-info">Sports</a>
-    </div>
-
-    <div>
-      <a href="#" class="btn btn-info">Cooking</a>
-    </div>
-
-    <div>
-      <a href="#" class="btn btn-info">Traveling</a>
-    </div>
-
-    <div>
-      <a href="#" class="btn btn-info">Fashion</a>
-    </div>
-
-    <div>
-      <a href="#" class="btn btn-info">Politics</a>
-    </div>
+    
   </div>
 
 
@@ -37,8 +14,10 @@
 
     <div>
       <div class="thumbnail" style="padding:2em;">
-        <a href="#">{{senderName?.username}}</a>
-        <p>{{senderMessage}}</p>
+        <div *ngFor="let message of messages">
+          <a href="#">{{message.createdBy}}</a>
+          <p>{{message.content}}</p>
+        </div>
       </div>
       <div>
         <form [formGroup]="myForm" (submit)="onMessageSubmit()">

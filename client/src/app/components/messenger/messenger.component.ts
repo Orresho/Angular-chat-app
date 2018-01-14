@@ -11,26 +11,30 @@ export class MessengerComponent implements OnInit {
 
   myForm: FormGroup;
 
-  // Messages from two users
-  recipientName: string;
-  recipientMessage: string;
-
-  senderName: string;
-  senderMessage: string;
-  
+  // Message content
+  messages: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private messagesService: MessagesService
-   ) {
-    
-      // Create form
-      this.createForm();    
+  ) {
+
+    // Create form
+    this.createForm();
   }
 
   ngOnInit() {
+    this.loadAllMessages();
   }
 
+  // Get all messages
+  loadAllMessages() {
+    this.messagesService.getAllMessages()
+      .subscribe(data => {
+        this.messages = data.data;
+        console.log(data.data)
+      })
+  }
 
   // Function to create the form
   createForm() {
@@ -44,26 +48,24 @@ export class MessengerComponent implements OnInit {
   }
 
 
-  onMessageSubmit(){
-
-    // Message and sender name
-    this.senderMessage = this.myForm.get('content').value;
-    this.senderName = JSON.parse(localStorage.getItem("user"));
+  onMessageSubmit() {
 
     const message = {
       content: this.myForm.get('content').value,
       user: JSON.parse(localStorage.getItem('user')),
       token: localStorage.getItem('token')
-    }  
+    }
 
     this.messagesService.saveMessages(message)
       .subscribe(data => {
-        
-      })
+        if (!data) {
+          console.log(data.message);
+        }
+        this.loadAllMessages();
+    })
 
-    console.log(message);
     this.myForm.reset();
-    
+
   }
 
 }
