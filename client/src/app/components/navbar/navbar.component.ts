@@ -1,3 +1,4 @@
+import { MessagesService } from './../../_services/messages/messages.service';
 import { AuthLogService } from './../../_services/authentication/auth-log.service';
 import { Router } from '@angular/router';
 import { AuthShared } from './../../_services/authentication/auth-shared.service';
@@ -9,9 +10,9 @@ import { FlashMessagesService } from "angular2-flash-messages";
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
 
-
+  // The alert properties
   message: string;
   messageClass: string;
 
@@ -19,9 +20,14 @@ export class NavbarComponent {
     private authShared: AuthShared,
     private authLogService: AuthLogService,
     private router: Router,
-    private flashMessagesService: FlashMessagesService
+    private flashMessagesService: FlashMessagesService,
+    private messagesService: MessagesService
   ) { }
 
+
+  ngOnInit() {
+
+  }
 
   onLogout() {
 

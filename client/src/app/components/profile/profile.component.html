@@ -5,17 +5,12 @@
     <!-- Left col displaying userinfo -->
     <div>
 
-      <h2>Profile Page</h2>
-      <ul class="list-group">
-        <li class="list-group-item">Username: {{username}}</li>
-        <li class="list-group-item">Email: {{email}}</li>
-      </ul>
-
-      <a href="#" class="btn btn-primary">Edit</a>
+      <app-profile-info></app-profile-info>
 
     </div>
 
     <!-- Middle column displaying profile picture and most liked messages below + number of new messages -->
+    <app-profile-top-messages></app-profile-top-messages>
     <div>
 
     </div>

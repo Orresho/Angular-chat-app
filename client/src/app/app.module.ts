@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { ProfileInfoComponent } from './components/profile/profile-info/profile-info.component';
 import { ProfileEditComponent } from './components/profile/profile-edit/profile-edit.component';
+import { ProfileTopMessagesComponent } from './components/profile/profile-top-messages/profile-top-messages.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ProfileEditComponent } from './components/profile/profile-edit/profile-
     NavbarComponent,
     ProfileInfoComponent,
     ProfileEditComponent,
+    ProfileTopMessagesComponent,
   ],
   imports: [
     BrowserModule,

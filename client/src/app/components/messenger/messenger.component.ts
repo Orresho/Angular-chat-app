@@ -32,7 +32,7 @@ export class MessengerComponent implements OnInit {
     this.messagesService.getAllMessages()
       .subscribe(data => {
         this.messages = data.data;
-        console.log(data.data)
+        console.log(data.data.length)
       })
   }
 

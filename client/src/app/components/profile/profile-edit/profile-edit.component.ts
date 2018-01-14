@@ -12,4 +12,10 @@ export class ProfileEditComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  // Button saves changes from users profile
+  saveChanges() {
+
+  }
+
 }

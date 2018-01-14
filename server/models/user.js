@@ -7,6 +7,16 @@ const userSchema = new Schema({
     username: { type: String, required: true, unique: true},
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    firstname: {type: String},
+    lastname: {type: String},
+    birthDate: {
+        year: {type: String},
+        month: {type: String},
+        day: {type: String}
+    },
+    gender: {type: String},
+    stars: {type: Number}
+    
 });
 
 // Apply the uniqueValidator plugin to userSchema.
