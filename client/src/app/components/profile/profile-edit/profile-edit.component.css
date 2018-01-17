@@ -1,0 +1,18 @@
+.profileEdit-wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.form-wrapper{
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+}
+
+.message-wrapper{
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    
+}
