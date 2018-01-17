@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,14 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  currentUrl;
 
   constructor(
+    private activatedRoute: ActivatedRoute,
+
   ) { }
 
   ngOnInit() {
+    this.getUserById();
   }
 
-
+  // Get single user with id
+  getUserById(){
+    this.currentUrl = this.activatedRoute.snapshot.params;
+    console.log(this.currentUrl.id);
+  }
 
 
 }

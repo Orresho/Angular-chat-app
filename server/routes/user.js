@@ -21,14 +21,15 @@ router.use((req, res, next) => {
 
     // Get token from client headers
     const token = req.headers['authorization'];
+    console.log(token);
 
     if (!token) {
         res.json({ success: false, message: 'No token provided' });
     } else {
-        
+
         // decode token
         jwt.verify(token, config.secret, (err, decoded) => {
-            
+
             // respond with error if token is invalid or has expired
             if (err) {
                 res.json({ success: false, message: 'Token invalid: ' + err })
@@ -36,6 +37,7 @@ router.use((req, res, next) => {
 
                 // Assign decoded token to global variable
                 req.decoded = decoded;
+                console.log(req.decoded);
 
                 // Break
                 next();
@@ -48,7 +50,7 @@ router.use((req, res, next) => {
 router.get('/profile', (req, res, next) => {
 
     // Query mongo
-    User.findOne({ _id: req.decoded.userId }).select('username email').exec((err, user) => {
+    User.findOne({ _id: req.decoded.userId }).exec((err, user) => {
         if (err) {
             res.json({ success: false, message: err })
         } else {
@@ -62,6 +64,43 @@ router.get('/profile', (req, res, next) => {
         }
     });
 });
+
+// Edit the profile
+router.put('/editProfile', (req, res) => {
+
+    User.findOne({ _id: req.decoded.userId }).exec((err, user) => {
+        if (err) {
+            res.json({ success: false, message: err });
+        } else {
+            if (!user) {
+                res.json({ success: false, message: 'Unable to authenticate User' });
+            } else {
+
+                // Update the user data with the inputed fields data
+                user.username = req.body.username;
+                user.email = req.body.email;
+                user.firstname = req.body.firstname;
+                user.lastname = req.body.lastname;
+                user.birthDate = req.body.birthDate;
+                user.gender = req.body.gender;
+
+                // Save the updated user fields
+                user.save((err) => {
+                    if (err) {
+                        if (err.errors) {
+                            res.json({ success: false, message: 'Please ensure form is filled out properly' });
+                        } else {
+                            res.json({ success: false, message: err }); // Return error message
+                        }
+                    } else {
+                        res.json({ success: true, message: 'User Updated!' }); // Return success message
+                    }
+                })
+            }
+        }
+    });
+
+})
 
 
 

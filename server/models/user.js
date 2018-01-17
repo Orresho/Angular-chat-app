@@ -7,15 +7,15 @@ const userSchema = new Schema({
     username: { type: String, required: true, unique: true},
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    firstname: {type: String},
-    lastname: {type: String},
-    birthDate: {
-        year: {type: String},
-        month: {type: String},
-        day: {type: String}
+    firstname: {type: String, default: ''},
+    lastname: {type: String, default: ''},
+    birthDate: { default: '',
+        year: {type: String, default: ''},
+        month: {type: String, default: ''},
+        day: {type: String, default: ''}
     },
-    gender: {type: String},
-    stars: {type: Number}
+    gender: {type: String, default: ''},
+    stars: {type: Number, default: ''}
     
 });
 

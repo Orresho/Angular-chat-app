@@ -1,3 +1,76 @@
-<p>
-  profile-edit works!
-</p>
+<div class="profileEdit-wrapper">
+
+  <div class="message-wrapper">
+    <div>
+      <!-- Custom Success/Error Message -->
+      <div class="show-hide-message">
+        <div [ngClass]="messageClass" style="text-align:center;">
+          {{ message }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty container -->
+    <div></div>
+
+    <!-- Empty container -->
+    <div></div>
+  </div>
+
+  <div class="form-wrapper">
+
+    <div>
+
+      <h2>Update profile</h2>
+      <hr>
+      <form [formGroup]="myForm" (submit)="onSaveChanges()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" formControlName="username" value="{{username}}">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" formControlName="email" value="{{email}}">
+        </div>
+
+        <div class="form-group">
+          <label for="firstname">First name</label>
+          <input type="text" class="form-control" formControlName="firstname" value="{{firstname}}" placeholder="First name">
+        </div>
+
+        <div class="form-group">
+          <label for="lastname">Last name</label>
+          <input type="text" class="form-control" formControlName="firstname" value="{{lastname}}" placeholder="Last name">
+        </div>
+
+        <div class="form-group">
+          <label for="birthDate">Birth date</label>
+          <input type="text" class="form-control" placeholder="YYYYMMDD" formControlName="birthdate" value="{{birthDate}}">
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select name="gender" id="inputGender" class="form-control" formControlName="gender" value="{{gender}}">
+            <option selected>Male</option>
+            <option>Female</option>
+          </select>
+        </div>
+
+        <!-- Back to profile, unsaved -->
+        <a [routerLink]="['/profile']" class="btn btn-primary">Go back</a>
+
+        <!-- Save changes -->
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </form>
+
+    </div>
+
+    <!-- Empty div -->
+    <div></div>
+
+    <!-- Empty div -->
+    <div></div>
+
+  </div>
+</div>

@@ -87,7 +87,7 @@ router.post('/register', (req, res, next) => {
     let user = new User({
       username: req.body.username.toLowerCase(),
       email: req.body.email,
-      password: bcrypt.hashSync(req.body.password, 10)
+      password: bcrypt.hashSync(req.body.password, 10),
     });
 
     // Save user to database

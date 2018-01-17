@@ -1,8 +1,12 @@
-<h2>Profile Page</h2>
+<h2>{{username}} <span>Stars: 5</span></h2>
 <ul class="list-group">
   <li class="list-group-item">Username: {{username}}</li>
   <li class="list-group-item">Email: {{email}}</li>
+  <li class="list-group-item">First name: {{firstname}}</li>
+  <li class="list-group-item">Last name: {{lastname}}</li>
+  <li class="list-group-item">Birthdate: {{birthDate}}</li>
+  <li class="list-group-item">Gender: {{gender}}</li>
 </ul>
 
 <!-- If edit, take me to a new edit page -->
-<a href="#" class="btn btn-primary">Edit</a>
+<a [routerLink]="['/profile-edit']" class="btn btn-primary">Edit Profile</a>

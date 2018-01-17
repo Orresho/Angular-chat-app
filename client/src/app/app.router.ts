@@ -1,3 +1,4 @@
+import { ProfileEditComponent } from './components/profile/profile-edit/profile-edit.component';
 import { HomeComponent } from './components/home/home.component';
 import { RouterModule, Routes } from "@angular/router";
 import { RegisterComponent } from './components/auth/register/register.component';
@@ -14,7 +15,7 @@ const rootRoutes: Routes = [
     {path: 'register', component: RegisterComponent, canActivate: [NotAuthGuard]},
     {path: 'messenger', component: MessengerComponent, canActivate: [AuthGuard]},
     {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-    
+    {path: 'profile-edit', component: ProfileEditComponent, canActivate: [AuthGuard]},
 ];
 
 export const routing = RouterModule.forRoot(rootRoutes);

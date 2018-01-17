@@ -57,6 +57,16 @@ export class AuthShared {
 
     }
 
+    updateUserProfile(){
+        this.createAuthenticationHeaders();
+        return this.http.put(`${this.domain}/user/editProfile`, this.options)
+            .map((response:Response) => {
+                response.json()
+                console.log(this.options);
+            })
+            .catch((error:Response) => Observable.throw(error.json()));
+    }
+
 
     //******** */
     //
